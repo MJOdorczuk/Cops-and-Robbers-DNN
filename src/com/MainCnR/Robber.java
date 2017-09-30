@@ -38,7 +38,7 @@ public class Robber extends Actor
                     key[i] = false;
                 }
             }
-            controllerTimer = 0.001;
+            controllerTimer = 0;
         }
     }
 
