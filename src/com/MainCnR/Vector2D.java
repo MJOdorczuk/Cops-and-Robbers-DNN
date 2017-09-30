@@ -11,6 +11,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Mateusz Śliwiński
+ * @author Michał Jan Odorczuk (the more contributing one)
  * 
  */
 public class Vector2D
