@@ -100,7 +100,7 @@ public class Assembly {
     
     public Vector2D ifCollide(Assembly Collider)
     {
-        Vector2D tmp = new Vector2D(0,0);
+        Vector2D tmp;
         Collision collision;
         for(int i=0; i<Party.size(); i++)
         {
@@ -108,7 +108,7 @@ public class Assembly {
             {
                 collision = new Collision(Party.get(i),Collider.getParty().get(j),Collider.getmPoint().Sub(mPoint),rotation,Collider.getRotation());
                 tmp = collision.ifCollide();
-                if(tmp != null) return tmp;
+                if(tmp != null) return tmp.complexConjugateProduct(rotation).Add(mPoint);
             }
         }
         return null;

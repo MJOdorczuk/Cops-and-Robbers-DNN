@@ -148,4 +148,9 @@ public class Vector2D
     {
         return new Vector2D(this.x * multiplier.x - this.y * multiplier.y,this.x * multiplier.y + this.y * multiplier.x);
     }
+    
+    public Vector2D complexConjugateProduct(Vector2D multiplier)
+    {
+        return new Vector2D(this.x * multiplier.x + this.y * multiplier.y, this.y * multiplier.x - this.x * multiplier.y);
+    }
 }
