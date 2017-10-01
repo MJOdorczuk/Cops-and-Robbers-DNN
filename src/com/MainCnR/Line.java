@@ -17,14 +17,14 @@ public class Line extends Part{
 
     Vector2D p1, p2;
 
-    public Line(Vector2D p1, Vector2D p2, Color color, Short priority, Vector2D shift) {
-        super(color, priority, shift);
+    public Line(Vector2D p1, Vector2D p2, Color color, Short priority) {
+        super(color, priority);
         this.p1 = p1;
         this.p2 = p2;
     }
 
-    public Line(Vector2D p1, Vector2D p2, Color color, Vector2D shift) {
-        super(color, shift);
+    public Line(Vector2D p1, Vector2D p2, Color color) {
+        super(color);
         this.p1 = p1;
         this.p2 = p2;
     }

@@ -38,7 +38,7 @@ public abstract class Actor extends GameObject
         sightDistance = Math.random() * (MAX_SIGHT_DISTANCE - MIN_SIGHT_DISTANCE) + MIN_SIGHT_DISTANCE;
         blockVector = new Vector2D(0, 0);
         model = new Assembly(100, position, rotation);
-        model.addParts(new Circle(16, new Vector2D(0, 0), Color.cyan, new Vector2D(0 , 0)));
+        model.addParts(new Circle(16, new Vector2D(0, 0), Color.cyan));
     }
     
     public abstract void controller(double deltaTime);

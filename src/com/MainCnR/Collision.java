@@ -24,11 +24,11 @@ public class Collision {
         cp2 = Collider2.getCharacteristicPoints();
         for(int i=0; i<cp1.size(); i++)
         {
-            cp1.get(i).Add(Collider1.getShift()).complexProduct(rot1);
+            cp1.get(i).Add(Collider1.getmPoint()).complexProduct(rot1);
         }
         for(int i=0; i<cp2.size(); i++)
         {
-            cp2.get(i).Add(Collider2.getShift()).complexProduct(rot2).Add(dif);
+            cp2.get(i).Add(Collider2.getmPoint()).complexProduct(rot2).Add(dif);
         }
             
         if(cp1.size() < cp2.size())

@@ -29,8 +29,8 @@ public class Circle extends Part{
      * @param priority
      * @param shift - shift from middle point of assembly to middle point of circle
      */
-    public Circle(double radius, Vector2D mPoint, Color color, Short priority, Vector2D shift) {
-        super(color, priority, shift);
+    public Circle(double radius, Vector2D mPoint, Color color, Short priority) {
+        super(color, priority);
         this.radius = radius;
         this.mPoint = mPoint;
     }
@@ -42,8 +42,8 @@ public class Circle extends Part{
      * @param color
      * @param shift - shift from middle point of assembly to middle point of circle.
      */
-    public Circle(double radius, Vector2D mPoint, Color color, Vector2D shift) {
-        super(color, shift);
+    public Circle(double radius, Vector2D mPoint, Color color) {
+        super(color);
         this.radius = radius;
         this.mPoint = mPoint;
     }

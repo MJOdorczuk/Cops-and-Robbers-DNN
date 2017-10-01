@@ -20,8 +20,8 @@ public class Triangle extends Part{
     public final static double MARGIN = 1.01;
 
     
-    public Triangle(Vector2D p1, Vector2D p2, Vector2D p3, Color color, Short priority, Vector2D shift) {
-        super(color, priority, shift);
+    public Triangle(Vector2D p1, Vector2D p2, Vector2D p3, Color color, Short priority) {
+        super(color, priority);
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -30,8 +30,8 @@ public class Triangle extends Part{
         bubble = Math.max(middlePoint.Sub(p1).getLength(), Math.max(middlePoint.Sub(p2).getLength(), middlePoint.Sub(p3).getLength())) * MARGIN;
     }
 
-    public Triangle(Vector2D p1, Vector2D p2, Vector2D p3, Color color, Vector2D shift) {
-        super(color, shift);
+    public Triangle(Vector2D p1, Vector2D p2, Vector2D p3, Color color) {
+        super(color);
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;

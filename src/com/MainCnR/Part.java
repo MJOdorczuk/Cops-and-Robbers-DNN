@@ -27,26 +27,20 @@ public abstract class Part {
      */
     protected Short priority;
     /**
-     * Vector(x,y) of shift between middle point of whole assembly and middle point of part.
-     */
-    protected Vector2D shift;
-    /**
      * Max possible value of priority variable.
      */
     public static final short MAX_PRIORITY = 1000;
 
-    public Part(Color color, Short priority, Vector2D shift) {
+    public Part(Color color, Short priority) {
         this.color = color;
         if(priority < MAX_PRIORITY)
             if(priority >= 0) this.priority = priority;
             else this.priority = MAX_PRIORITY;
         else this.priority = MAX_PRIORITY;
-        this.shift = shift;
     }
 
-    public Part(Color color, Vector2D shift) {
+    public Part(Color color) {
         this.color = color;
-        this.shift = shift;
         this.priority = MAX_PRIORITY;
     }
     
@@ -75,15 +69,6 @@ public abstract class Part {
         this.priority = priority;
     }
 
-    public Vector2D getShift() {
-        return shift;
-    }
-
-    public void setShift(Vector2D shift) {
-        this.shift = shift;
-    }
-    
-    
     public abstract ArrayList <Vector2D> getCharacteristicPoints();
     /**
      * Calcualte moment of inertia relative to its middle point.
