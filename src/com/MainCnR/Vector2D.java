@@ -143,4 +143,9 @@ public class Vector2D
     {
         return x * crossed.y - y * crossed.x;
     }
+    
+    public Vector2D complexProduct(Vector2D multiplier)
+    {
+        return new Vector2D(this.x * multiplier.x - this.y * multiplier.y,this.x * multiplier.y + this.y * multiplier.x);
+    }
 }
