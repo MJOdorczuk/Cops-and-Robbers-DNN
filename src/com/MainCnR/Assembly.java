@@ -115,11 +115,16 @@ public class Assembly {
         return null;
     }
     
-    public void block(Assembly Collider)
+    public boolean getBlocks(Assembly Collider)
     {
         Vector2D PoC = ifCollide(Collider);
-        Collider.blocks.add(PoC.Sub(Collider.mPoint).getUnit());
-        this.blocks.add(PoC.Sub(this.mPoint).getUnit());
+        if(PoC != null)
+        {
+            Collider.blocks.add(PoC.Sub(Collider.mPoint).getUnit());
+            this.blocks.add(PoC.Sub(this.mPoint).getUnit());
+            return true;
+        }
+        return false;
     }
     
     public void render(Graphics graph, Vector2D local)
@@ -222,7 +227,7 @@ public class Assembly {
         this.rotation = rotation;
     }
     
-    public ArrayList<Vector2D> update()
+    public ArrayList<Vector2D> updateBlocks()
     {
         ArrayList<Vector2D> ret = blocks;
         blocks.clear();;
