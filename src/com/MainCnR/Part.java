@@ -85,6 +85,9 @@ public abstract class Part {
     
     
     public abstract ArrayList <Vector2D> getCharateristicPoints();
+    /**
+     * Calcualte moment of inertia relative to its middle point.
+     */
     public abstract double getMoI();
     public abstract Vector2D getFurthestPoint(Vector2D point);
     public abstract double getField();
