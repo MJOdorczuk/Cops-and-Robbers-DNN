@@ -5,6 +5,7 @@
  */
 package com.MainCnR;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 /**
@@ -19,6 +20,7 @@ public abstract class GameObject
     protected Vector2D anchorPoint;
     protected double rotation;
     protected double timeInterval;
+    protected double animationTime;
     protected Assembly model;
     
     public GameObject(int x, int y, ID id)
@@ -29,7 +31,19 @@ public abstract class GameObject
     }
     
     public abstract void tick(double deltaTime);
-    public abstract void render(Graphics graph, Vector2D local);
+    public void render(Graphics graph, Vector2D local)
+    {
+        switch(id)
+        {
+            case Building:
+                break;
+            case World:
+                
+                break;
+                
+        }
+        model.render(graph, local);
+    }
 
     public Vector2D getPosition()
     {

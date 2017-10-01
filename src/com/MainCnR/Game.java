@@ -39,7 +39,7 @@ public class Game extends Canvas implements Runnable
         */
         // Map / World
         handler.addObject(new World(0, 0, ID.World));
-        /*for(int i = 0; i < 1; i++)
+        for(int i = 0; i < 10; i++)
         {
             handler.addObject(new Cop(
                     (int)(Math.random() * WINDOW_WIDTH),
@@ -49,7 +49,7 @@ public class Game extends Canvas implements Runnable
                     (int)(Math.random() * WINDOW_WIDTH),
                     (int)(Math.random() * WINDOW_HEIGHT),
                     ID.Robber));
-        }*/
+        }
         handler.addObject(new Robber(
                     (int)(200),
                     (int)(200),

@@ -5,9 +5,6 @@
  */
 package com.MainCnR;
 
-import java.awt.Color;
-import java.awt.Graphics;
-
 /**
  *
  * @author Mateusz Śliwiński
@@ -16,7 +13,6 @@ public class Cop extends Actor
 {
 
     private double destRotation;
-    private double animationTime;
     
     public Cop(int x, int y, ID id)
     {
@@ -59,21 +55,5 @@ public class Cop extends Actor
         if(position.x > Game.WINDOW_WIDTH - 16) position.x = Game.WINDOW_WIDTH - 16;
         if(position.y < 16) position.y = 16;
         if(position.y > Game.WINDOW_HEIGHT - 16) position.y = Game.WINDOW_HEIGHT- 16;
-    }
-
-    @Override
-    public void render(Graphics graph, Vector2D local)
-    {
-        drawSight(graph, local);
-        graph.setColor(Color.white);
-        graph.fillOval((int)(position.x - local.x - 16),
-                (int)(position.y - local.y - 16),
-                32, 32);
-        if(animationTime < 0)
-            graph.setColor(Color.red);
-        else
-            graph.setColor(Color.blue);
-        graph.fillOval((int)(position.x - local.x - 12), (int)(position.y - local.y - 12), 24, 24);
-        model.render(graph, local);
     }
 }

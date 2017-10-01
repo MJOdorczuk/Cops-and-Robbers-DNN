@@ -59,6 +59,7 @@ public class Handler
                 {
                     tempOther = actor.get(j);
                     tempMain.lookFor(tempOther);
+                    //Collision detection
                 }
             }
         }
