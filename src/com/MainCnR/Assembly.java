@@ -127,11 +127,11 @@ public class Assembly {
         return false;
     }
     
-    public void render(Graphics graph, Vector2D local)
+    public void render(Graphics graph, Vector2D local, Vector2D scale)
     {
         for(int i=0; i<Party.size(); i++)
         {
-            Party.get(i).render(graph, mPoint, rotation, local);
+            Party.get(i).render(graph, mPoint, rotation, local, scale);
         }
     }
     

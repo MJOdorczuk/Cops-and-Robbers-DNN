@@ -32,9 +32,14 @@ public class Line extends Part{
     
     
     @Override
-    public void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation, Vector2D local) {
+    public void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation, Vector2D local, Vector2D scale) {
         graph.setColor(color);
-        graph.drawLine((int)p1.complexProduct(rotation).Add(anchorPoint).Sub(local).x, (int)p1.complexProduct(rotation).Add(anchorPoint).Sub(local).y, (int)p2.complexProduct(rotation).Add(anchorPoint).Sub(local).x, (int)p2.complexProduct(rotation).Add(anchorPoint).Sub(local).y);
+        rotation = rotation.getUnit();
+        int x1 = (int)p1.complexProduct(rotation).Add(anchorPoint).Sub(local).complexProduct(scale).x;
+        int x2 = (int)p2.complexProduct(rotation).Add(anchorPoint).Sub(local).complexProduct(scale).x;
+        int y1 = (int)p1.complexProduct(rotation).Add(anchorPoint).Sub(local).complexProduct(scale).y;
+        int y2 = (int)p2.complexProduct(rotation).Add(anchorPoint).Sub(local).complexProduct(scale).y;
+        graph.drawLine(x1, y1, x2, y2);
     }
 
     @Override

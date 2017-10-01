@@ -50,7 +50,7 @@ public abstract class Part {
      * @param anchorPoint - middle point of whole assembly
      * @param rotation 
      */
-    public abstract void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation, Vector2D local);
+    public abstract void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation, Vector2D local, Vector2D scale);
     public abstract double getCharactericticValue();
 
     public Color getColor() {

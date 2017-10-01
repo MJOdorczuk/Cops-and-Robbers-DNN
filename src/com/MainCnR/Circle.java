@@ -55,10 +55,14 @@ public class Circle extends Part{
      * @param rotation - rotation of whole assembly.
      */
     @Override
-    public void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation, Vector2D local) 
+    public void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation, Vector2D local, Vector2D scale) 
     {
         graph.setColor(color);
-        graph.drawOval((int)(mPoint.complexProduct(rotation).Add(anchorPoint).Sub(local).x - radius), (int)(mPoint.complexProduct(rotation).Add(anchorPoint).Sub(local).y - radius), (int)(2*radius), (int)(2*radius));
+        double rad = radius * scale.getLength();
+        rotation = rotation.getUnit();
+        int x = (int) (mPoint.complexProduct(rotation).Add(anchorPoint).Sub(local).complexProduct(scale).x - rad);
+        int y = (int) (mPoint.complexProduct(rotation).Add(anchorPoint).Sub(local).complexProduct(scale).y - rad);
+        graph.drawOval(x, y, (int)(2*rad), (int)(2*rad));
     }
     
     /**

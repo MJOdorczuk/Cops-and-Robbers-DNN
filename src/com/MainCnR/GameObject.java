@@ -31,7 +31,7 @@ public abstract class GameObject
     }
     
     public abstract void tick(double deltaTime);
-    public void render(Graphics graph, Vector2D local)
+    public void render(Graphics graph, Vector2D local, Vector2D scale)
     {
         switch(id)
         {
@@ -42,7 +42,7 @@ public abstract class GameObject
                 break;
                 
         }
-        model.render(graph, local);
+        model.render(graph, local, scale);
     }
 
     public Vector2D getPosition()

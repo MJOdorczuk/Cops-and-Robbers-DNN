@@ -41,9 +41,16 @@ public class Triangle extends Part{
     }
     
     @Override
-    public void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation, Vector2D local) {
+    public void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation, Vector2D local, Vector2D scale) {
         graph.setColor(color);
-        graph.drawPolygon(new int[]{(int)p1.complexProduct(rotation).Add(anchorPoint).Sub(local).x,(int)p2.complexProduct(rotation).Add(anchorPoint).Sub(local).x,(int)p3.complexProduct(rotation).Add(anchorPoint).Sub(local).x}, new int[]{(int)p1.complexProduct(rotation).Add(anchorPoint).Sub(local).y,(int)p2.complexProduct(rotation).Add(anchorPoint).Sub(local).y,(int)p3.complexProduct(rotation).Add(anchorPoint).Sub(local).y}, 3);
+        rotation = rotation.getUnit();
+        int x1 = (int)p1.complexProduct(rotation).Add(anchorPoint).Sub(local).complexProduct(scale).x;
+        int x2 = (int)p2.complexProduct(rotation).Add(anchorPoint).Sub(local).complexProduct(scale).x;
+        int x3 = (int)p3.complexProduct(rotation).Add(anchorPoint).Sub(local).complexProduct(scale).x;
+        int y1 = (int)p1.complexProduct(rotation).Add(anchorPoint).Sub(local).complexProduct(scale).y;
+        int y2 = (int)p2.complexProduct(rotation).Add(anchorPoint).Sub(local).complexProduct(scale).y;
+        int y3 = (int)p3.complexProduct(rotation).Add(anchorPoint).Sub(local).complexProduct(scale).y;
+        graph.drawPolygon(new int[]{x1,x2,x3}, new int[]{y1,y2,y3}, 3);
     }
 
     @Override

@@ -54,16 +54,20 @@ public class Robber extends Actor
     }
     
     @Override
-    public void render(Graphics graph, Vector2D local)
+    public void render(Graphics graph, Vector2D local, Vector2D scale)
     {
-        drawSight(graph, local);
+        double outRad = 16 * scale.getLength();
+        double inRad = 12 * scale.getLength();
+        int x1 = (int)(position.Sub(local).complexProduct(scale).x - outRad);
+        int y1 = (int)(position.Sub(local).complexProduct(scale).y - outRad);
+        int x2 = (int)(position.Sub(local).complexProduct(scale).x - inRad);
+        int y2 = (int)(position.Sub(local).complexProduct(scale).y - inRad);
+        drawSight(graph, local, scale);
         graph.setColor(Color.darkGray);
-        graph.fillOval((int)(position.x - local.x - 16),
-                (int)(position.y - local.y - 16),
-                32, 32);
+        graph.fillOval(x1, y1, (int)(outRad * 2), (int)(outRad * 2));
         graph.setColor(Color.black);
-        graph.fillOval((int)(position.x - local.x - 12), (int)(position.y - local.y - 12), 24, 24);
-        model.render(graph, local);
+        graph.fillOval(x2, y2, (int)(inRad * 2), (int)(inRad * 2));
+        model.render(graph, local, scale);
     }
     
 }

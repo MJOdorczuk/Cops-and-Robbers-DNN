@@ -15,6 +15,7 @@ import java.util.LinkedList;
 public class Handler
 {
     private Vector2D localPosition;
+    private Vector2D scale = new Vector2D(1,0);
     private KeyInput keyInput;
     LinkedList<GameObject> object;
     LinkedList<Actor> actor;
@@ -44,7 +45,7 @@ public class Handler
                     !key[KeyInput.KEY_LEFT] &&
                     !key[KeyInput.KEY_RIGHT])
             {
-                Vector2D tempVector = tempObject.position.Add(new Vector2D(- Game.WINDOW_WIDTH / 2, - Game.WINDOW_HEIGHT / 2).Sub(localPosition));
+                Vector2D tempVector = tempObject.position.Add(new Vector2D(- Game.WINDOW_WIDTH / 2, - Game.WINDOW_HEIGHT / 2).complexDivision(scale)).Sub(localPosition);
                 localPosition = localPosition.Add(tempVector.Multiply(2 * deltaTime));
             }
         }
@@ -87,7 +88,7 @@ public class Handler
         for(int i = 0; i < object.size(); i++)
         {
             GameObject tempObject = object.get(i);
-            tempObject.render(graph, localPosition);
+            tempObject.render(graph, localPosition, scale);
             
         }
     }

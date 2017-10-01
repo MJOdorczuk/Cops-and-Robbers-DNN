@@ -96,7 +96,7 @@ public abstract class Actor extends GameObject
         return false;
     }
     
-    protected void drawSight(Graphics graph, Vector2D local)
+    protected void drawSight(Graphics graph, Vector2D local, Vector2D scale)
     {
         if(seeAnyone)
         {
@@ -108,13 +108,13 @@ public abstract class Actor extends GameObject
         }
         Vector2D localPosition = new Vector2D(
                 position.x - local.x,
-                position.y - local.y);
+                position.y - local.y).complexProduct(scale);
         Vector2D point1 = new Vector2D(
                 sightDistance * Math.cos(rotation + sightAngle / 2),
-                sightDistance * Math.sin(rotation + sightAngle / 2));
+                sightDistance * Math.sin(rotation + sightAngle / 2)).complexProduct(scale);
         Vector2D point2 = new Vector2D(
                 sightDistance * Math.cos(rotation - sightAngle / 2),
-                sightDistance * Math.sin(rotation - sightAngle / 2));
+                sightDistance * Math.sin(rotation - sightAngle / 2)).complexProduct(scale);
         point1 = point1.Add(localPosition);
         point2 = point2.Add(localPosition);
         graph.drawLine(

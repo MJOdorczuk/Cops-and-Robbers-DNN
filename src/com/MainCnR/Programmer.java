@@ -35,18 +35,32 @@ public class Programmer extends Actor
     }
     
      @Override
-    public void render(Graphics graph, Vector2D local)
+    public void render(Graphics graph, Vector2D local, Vector2D scale)
     {
-        drawSight(graph, local);
+        double outRad = 16 * scale.getLength();
+        double radDif = 4 * scale.getLength();
+        int x, y;
+        drawSight(graph, local, scale);
         graph.setColor(Color.white);
-        graph.fillOval((int)(position.x - local.x - 16), (int)(position.y - local.y - 16), 32, 32);
+        x = (int)(position.Sub(local).complexProduct(scale).x - outRad);
+        y = (int)(position.Sub(local).complexProduct(scale).y - outRad);
+        graph.fillOval(x, y, (int)(2*outRad), (int)(2*outRad));
         graph.setColor(Color.gray);
-        graph.fillOval((int)(position.x - local.x - 12), (int)(position.y - local.y - 12), 24, 24);
+        outRad -= radDif;
+        x = (int)(position.Sub(local).complexProduct(scale).x - outRad);
+        y = (int)(position.Sub(local).complexProduct(scale).y - outRad);
+        graph.fillOval(x, y, (int)(2*outRad), (int)(2*outRad));
         graph.setColor(Color.darkGray);
-        graph.fillOval((int)(position.x - local.x - 8), (int)(position.y - local.y - 8), 16, 16);
+        outRad -= radDif;
+        x = (int)(position.Sub(local).complexProduct(scale).x - outRad);
+        y = (int)(position.Sub(local).complexProduct(scale).y - outRad);
+        graph.fillOval(x, y, (int)(2*outRad), (int)(2*outRad));
         graph.setColor(Color.black);
-        graph.fillOval((int)(position.x - local.x - 4), (int)(position.y - local.y - 4), 8, 8);
-        model.render(graph, local);
+        outRad -= radDif;
+        x = (int)(position.Sub(local).complexProduct(scale).x - outRad);
+        y = (int)(position.Sub(local).complexProduct(scale).y - outRad);
+        graph.fillOval(x, y, (int)(2*outRad), (int)(2*outRad));
+        model.render(graph, local, scale);
     }
 
     public void setKey(boolean[] key)
