@@ -44,9 +44,9 @@ public class Vector2D
 	this.y = radius * Math.sin(radians);
     }
     
-    float getLength()
+    public double getLength()
     {
-	return (float)Math.sqrt(x * x + y * y);
+	return Math.sqrt(x * x + y * y);
     }
     
     public double getAbsRotation()

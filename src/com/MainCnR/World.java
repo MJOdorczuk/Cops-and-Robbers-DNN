@@ -60,7 +60,7 @@ public class World extends GameObject
         graph.fillRect(
                 (int)(position.x - local.x - 20),
                 (int)(position.y - local.y + Game.WINDOW_HEIGHT),
-                (int)(Game.WINDOW_WIDTH + 20),
+                (int)(Game.WINDOW_WIDTH + 40),
                 (int)(20));
         graph.fillRect(
                 (int)(position.x - local.x + Game.WINDOW_WIDTH),

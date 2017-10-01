@@ -58,7 +58,7 @@ public class Cop extends Actor
         if(position.x < 16) position.x = 16;
         if(position.x > Game.WINDOW_WIDTH - 16) position.x = Game.WINDOW_WIDTH - 16;
         if(position.y < 16) position.y = 16;
-        if(position.y > Game.WINDOW_HEIGHT - 44) position.y = Game.WINDOW_HEIGHT- 44;
+        if(position.y > Game.WINDOW_HEIGHT - 16) position.y = Game.WINDOW_HEIGHT- 16;
     }
 
     @Override

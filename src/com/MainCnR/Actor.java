@@ -16,6 +16,12 @@ import java.awt.Graphics;
  */
 public abstract class Actor extends GameObject
 {
+    
+    public static final short MIN_SIGHT_DISTANCE = 50;
+    public static final short MAX_SIGHT_DISTANCE = 150;
+    public static final short MIN_SIGHT_ANGLE = 10;
+    public static final short MAX_SIGHT_ANGLE = 90;
+    
     protected double sightAngle;
     protected double sightDistance;
     protected double controllerTimer;
@@ -28,8 +34,8 @@ public abstract class Actor extends GameObject
         super(x, y, id);
         key = new boolean[15];
         rotation = (Math.random() * 2 * Math.PI);
-        sightAngle = Math.random() * 1.4 + 0.1;
-        sightDistance = Math.random() * 150 + 50;
+        sightAngle = Math.random() * Math.toRadians(MAX_SIGHT_ANGLE - MIN_SIGHT_ANGLE) + Math.toRadians(MIN_SIGHT_ANGLE);
+        sightDistance = Math.random() * (MAX_SIGHT_DISTANCE - MIN_SIGHT_DISTANCE) + MIN_SIGHT_DISTANCE;
         blockVector = new Vector2D(0, 0);
     }
     
@@ -41,9 +47,13 @@ public abstract class Actor extends GameObject
         {
             velocity.setVectoR(200, getRotation());
         }
-        if(key[KeyInput.KEY_S])
+        else if(key[KeyInput.KEY_S])
         {
             velocity.setVectoR(-100, getRotation());
+        }
+        else
+        {
+            velocity = velocity.Multiply(0.1 * deltaTime);
         }
         if(key[KeyInput.KEY_A])
         {
@@ -57,17 +67,16 @@ public abstract class Actor extends GameObject
             if(getRotation() > Math.PI)
                setRotation(getRotation() - 2 * Math.PI);
         }
-        if(key[KeyInput.KEY_Q] && sightAngle > 0.1)
+        if(key[KeyInput.KEY_Q] && sightAngle > Math.toRadians(MIN_SIGHT_ANGLE))
         {
             sightAngle -= 0.05;
         }
-        if(key[KeyInput.KEY_E] && sightAngle < 1.5)
+        if(key[KeyInput.KEY_E] && sightAngle < Math.toRadians(MAX_SIGHT_ANGLE))
         {
             sightAngle += 0.05;
         }
-        velocity = velocity.Sub(blockVector);
-        velocity = velocity.Multiply(deltaTime);
-        position = position.Add(velocity);
+        //velocity = velocity.Sub(blockVector);
+        position = position.Add(velocity.Multiply(deltaTime));
     }
     
     public boolean lookFor(GameObject object)
