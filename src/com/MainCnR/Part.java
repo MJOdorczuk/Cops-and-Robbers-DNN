@@ -53,6 +53,15 @@ public abstract class Part {
     public void setPriority(short priority) {
         this.priority = priority;
     }
+
+    public Vector2D getShift() {
+        return shift;
+    }
+
+    public void setShift(Vector2D shift) {
+        this.shift = shift;
+    }
+    
     
     public abstract ArrayList <Vector2D> getCharateristicPoints();
     public abstract double getMoI();

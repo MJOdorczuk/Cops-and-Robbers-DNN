@@ -16,13 +16,13 @@ import java.util.Comparator;
  */
 public class Assembly {
     
-    ArrayList <Part> Party = new ArrayList<>();
-    double bubble;
-    double mass;
-    double MoI;
-    Vector2D mPoint;
-    Vector2D rotation;
-    ArrayList<Vector2D> blocks;
+    private ArrayList <Part> Party;
+    private double bubble;
+    private double mass;
+    private double MoI;
+    private Vector2D mPoint;
+    private Vector2D rotation;
+    private ArrayList<Vector2D> blocks;
 
     public Assembly(double bubble, double mass, double MoI, Vector2D mPoint, double theta) {
         this.bubble = bubble;
@@ -30,6 +30,7 @@ public class Assembly {
         this.MoI = MoI;
         this.mPoint = mPoint;
         rotation = new Vector2D(1,0);
+        Party = new ArrayList<>();
         rotate(theta);
     }
 
@@ -38,6 +39,7 @@ public class Assembly {
         this.MoI = MoI;
         this.mPoint = mPoint;
         rotation = new Vector2D(1,0);
+        Party = new ArrayList<>();
         rotate(theta);
     }
 
@@ -45,6 +47,7 @@ public class Assembly {
         this.mass = mass;
         this.mPoint = mPoint;
         rotation = new Vector2D(1,0);
+        Party = new ArrayList<>();
         rotate(theta);
     }
     
@@ -98,13 +101,12 @@ public class Assembly {
     public Vector2D ifCollide(Assembly Collider)
     {
         Vector2D tmp = new Vector2D(0,0);
-        Collision collision = new Collision(null, null);
+        Collision collision;
         for(int i=0; i<Party.size(); i++)
         {
             for(int j=0; j<Collider.getParty().size(); j++)
             {
-                collision.setCollider1(Party.get(i));
-                collision.setCollider2(Collider.Party.get(j));
+                collision = new Collision(Party.get(i),Collider.getParty().get(j),Collider.getmPoint().Sub(mPoint),rotation,Collider.getRotation());
                 tmp = collision.ifCollide();
                 if(tmp != null) return tmp;
             }
@@ -202,5 +204,14 @@ public class Assembly {
     {
         this.rotation = this.rotation.complexProduct(new Vector2D(Math.cos(theta), Math.sin(theta)));
     }
+
+    public Vector2D getRotation() {
+        return rotation;
+    }
+
+    public void setRotation(Vector2D rotation) {
+        this.rotation = rotation;
+    }
+    
     
 }

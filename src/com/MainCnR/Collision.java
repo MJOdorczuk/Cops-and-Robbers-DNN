@@ -17,11 +17,20 @@ public class Collision {
     ArrayList <Vector2D> cp1 = new ArrayList <>();
     ArrayList <Vector2D> cp2 = new ArrayList <>();
 
-    public Collision(Part Collider1, Part Collider2) {
+    public Collision(Part Collider1, Part Collider2, Vector2D dif, Vector2D rot1, Vector2D rot2) {
         this.Collider1 = Collider1;
         this.Collider2 = Collider2;
         cp1 = Collider1.getCharateristicPoints();
         cp2 = Collider2.getCharateristicPoints();
+        for(int i=0; i<cp1.size(); i++)
+        {
+            cp1.get(i).Add(Collider1.getShift()).complexProduct(rot1);
+        }
+        for(int i=0; i<cp2.size(); i++)
+        {
+            cp2.get(i).Add(Collider2.getShift()).complexProduct(rot2).Add(dif);
+        }
+            
         if(cp1.size() < cp2.size())
         {
             ArrayList <Vector2D> temp = cp1;
