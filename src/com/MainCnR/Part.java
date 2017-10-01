@@ -15,14 +15,31 @@ import java.util.ArrayList;
  */
 public abstract class Part {
    
+    
+    /**
+     * Color of part of assembly to render onto screen.
+     */
     protected Color color;
+    /**
+     * Priority of rendering.
+     * If user want one part to cover another than he should give covering part lower value for piority.
+     * The lower value (0 - MAX_PRIORITY) the higher priority of rendering.
+     */
     protected Short priority;
+    /**
+     * Vector(x,y) of shift between middle point of whole assembly and middle point of part.
+     */
     protected Vector2D shift;
+    /**
+     * Max possible value of priority variable.
+     */
     public static final short MAX_PRIORITY = 1000;
 
     public Part(Color color, Short priority, Vector2D shift) {
         this.color = color;
-        if(priority < MAX_PRIORITY)this.priority = priority;
+        if(priority < MAX_PRIORITY)
+            if(priority >= 0) this.priority = priority;
+            else this.priority = MAX_PRIORITY;
         else this.priority = MAX_PRIORITY;
         this.shift = shift;
     }
@@ -32,9 +49,13 @@ public abstract class Part {
         this.shift = shift;
         this.priority = MAX_PRIORITY;
     }
-
     
-
+    /**
+     * 
+     * @param graph
+     * @param anchorPoint - middle point of whole assembly
+     * @param rotation 
+     */
     public abstract void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation);
     public abstract double getCharactericticValue();
 
