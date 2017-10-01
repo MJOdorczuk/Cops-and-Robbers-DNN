@@ -222,5 +222,11 @@ public class Assembly {
         this.rotation = rotation;
     }
     
+    public ArrayList<Vector2D> update()
+    {
+        ArrayList<Vector2D> ret = blocks;
+        blocks.clear();;
+        return blocks;
+    }
     
 }
