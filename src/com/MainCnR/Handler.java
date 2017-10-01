@@ -23,7 +23,7 @@ public class Handler
 
     public Handler(KeyInput keyInput)
     {
-        localPosition = new Vector2D(-50, -50);
+        localPosition = new Vector2D(- Game.WINDOW_WIDTH / 2, - Game.WINDOW_HEIGHT / 2).complexDivision(scale);
         this.keyInput = keyInput;
         object = new LinkedList<>();
         actor = new LinkedList<>();
