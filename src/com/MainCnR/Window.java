@@ -19,7 +19,8 @@ public class Window extends Canvas
     private static final long serialVersionUID = 2694837145993288028L;
     
     public Window(int width, int height, String title, Game game)
-    {
+    {   
+        // Setting up Window properties
         JFrame frame = new JFrame(title);
         frame.setPreferredSize(new Dimension(width, height));
         frame.setMaximumSize(new Dimension(width, height));
@@ -29,6 +30,6 @@ public class Window extends Canvas
         frame.setLocationRelativeTo(null);
         frame.add(game);
         frame.setVisible(true);
-        game.start();
+        game.start();   // Starting game clock
     }
 }

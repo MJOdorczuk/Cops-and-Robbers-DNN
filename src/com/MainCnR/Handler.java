@@ -37,6 +37,16 @@ public class Handler
         {
             GameObject tempObject = object.get(i);   
             tempObject.tick(deltaTime);
+            if(tempObject.getId() == ID.Programmer &&
+                    tempObject.velocity.getLength() != 0 &&
+                    !key[KeyInput.KEY_UP] &&
+                    !key[KeyInput.KEY_DOWN] &&
+                    !key[KeyInput.KEY_LEFT] &&
+                    !key[KeyInput.KEY_RIGHT])
+            {
+                Vector2D tempVector = tempObject.position.Add(new Vector2D(- Game.WINDOW_WIDTH / 2, - Game.WINDOW_HEIGHT / 2).Sub(localPosition));
+                localPosition = localPosition.Add(tempVector.Multiply(2 * deltaTime));
+            }
         }
         for(int i = 0; i < actor.size(); i++)
         {

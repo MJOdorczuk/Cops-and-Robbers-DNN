@@ -18,20 +18,26 @@ public class Game extends Canvas implements Runnable
 {
     private static final long serialVersionUID = 4382329884180375436L;
     
+    // Defeualt Window size
     public static final int WINDOW_WIDTH = 960;
-    public static final int WINDOW_HEIGHT = WINDOW_WIDTH * 9 /16;
+    public static final int WINDOW_HEIGHT = WINDOW_WIDTH * 9 /16;   // 16:9 ratio
     
     private Thread thread;
-    private boolean running = false;
-    private Handler handler;
-    private int fps;
+    private boolean running = false;    // Is game clock running
+    private Handler handler;    // Updates and renders
+    private int fps;    // Frames per Sec - variable
     
     public Game()
     {
         KeyInput keyInput = new KeyInput();
         this.addKeyListener(keyInput);
-        handler = new Handler(keyInput);
-        new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Cops and Robbers DNN", this);
+        handler = new Handler(keyInput);    //  new Handler instance for render and updates
+        new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Cops and Robbers DNN", this);  // Create new Window(no instance)
+        
+        /*
+        ADD STARTING OBJECTS HERE
+        */
+        // Map / World
         handler.addObject(new World(0, 0, ID.World));
         for(int i = 0; i < 1; i++)
         {
@@ -45,21 +51,23 @@ public class Game extends Canvas implements Runnable
                     ID.Robber));
         }
         handler.addObject(new Programmer(100, 100, ID.Programmer, keyInput));
+        //Other
+        
     }
     
     public synchronized void start()
     {
         thread = new Thread(this);
-        thread.start();
-        running = true;
+        thread.start(); // Starting one new thread for the program
+        running = true; // Game clock starts running
     }
     
     public synchronized void stop()
     {
         try
         {
-            thread.join();
-            running = false;
+            thread.join();  // Joining the thread back to others
+            running = false;    // Game clock stops running
         }catch(Exception exception)
         {
             exception.printStackTrace();
@@ -71,11 +79,11 @@ public class Game extends Canvas implements Runnable
     {
         long lastTime = System.nanoTime();
         final double AMOUNT_OF_TICKS = 60.0;
-        double ns = 1000000000 / AMOUNT_OF_TICKS;
+        double ns = 1000000000 / AMOUNT_OF_TICKS;   // 1 sec per default amount of ticks
         double delta = 0;
         long timer = System.currentTimeMillis();
         int frames = 0;
-        while(running)
+        while(running)  // To stop the game clock set boolean : running = false
         {
                     long now = System.nanoTime();
                     delta += (now - lastTime) / ns;
@@ -100,13 +108,14 @@ public class Game extends Canvas implements Runnable
         stop();
     }
     
-    private void tick()
+    private void tick() // Executes (default amount of ticks) times per second
     {
         handler.tick();
     }
 
-    private void render()
+    private void render()   // Executes maximum times per second
     {
+        // Initializing buffer strategy
         BufferStrategy bufferStrat = this.getBufferStrategy();
         if(bufferStrat == null)
         {
@@ -114,19 +123,22 @@ public class Game extends Canvas implements Runnable
             return;
         }
         Graphics graph = bufferStrat.getDrawGraphics();
-        graph.setColor(Color.black);
-        graph.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
         
-        handler.render(graph);
+        graph.setColor(Color.black);
+        graph.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);  // Draw Window-size filled rectangle
+        
+        handler.render(graph);  // Render objects
         graph.setColor(Color.white);
         String fpsString = "FPS: " + Integer.toString(fps);
-        graph.drawString(fpsString, WINDOW_WIDTH - 65, 10);
+        graph.drawString(fpsString, WINDOW_WIDTH - 65, 10); // Draw FPS insert GUI HERE
+        
+        // Display on screen
         graph.dispose();
         bufferStrat.show();
     }
     
     public static void main(String[] args)
     {
-        Game game = new Game();
+        Game game = new Game(); // Creating new Game object(no instance needed)
     }
 }
