@@ -17,20 +17,22 @@ public class Line extends Part{
 
     Vector2D p1, p2;
 
-    public Line(Vector2D p1, Vector2D p2, Color color, Short priority) {
-        super(color, priority);
+    public Line(Vector2D p1, Vector2D p2, Color color, Short priority, Vector2D shift) {
+        super(color, priority, shift);
         this.p1 = p1;
         this.p2 = p2;
     }
 
-    public Line(Vector2D p1, Vector2D p2, Color color) {
-        super(color);
+    public Line(Vector2D p1, Vector2D p2, Color color, Vector2D shift) {
+        super(color, shift);
         this.p1 = p1;
         this.p2 = p2;
     }
+
+    
     
     @Override
-    public void render(Graphics graph) {
+    public void render(Graphics graph, Vector2D anchorPoint, double sin) {
         graph.setColor(color);
         graph.drawLine((int)p1.x, (int)p1.y, (int)p2.x, (int)p2.y);
     }

@@ -17,18 +17,25 @@ public abstract class Part {
    
     protected Color color;
     protected Short priority;
+    protected Vector2D shift;
+    public static final short MAX_PRIORITY = 1000;
 
-    public Part(Color color, Short priority) {
+    public Part(Color color, Short priority, Vector2D shift) {
         this.color = color;
-        this.priority = priority;
+        if(priority < MAX_PRIORITY)this.priority = priority;
+        else this.priority = MAX_PRIORITY;
+        this.shift = shift;
     }
 
-    public Part(Color color) {
+    public Part(Color color, Vector2D shift) {
         this.color = color;
-        this.priority = 100;
+        this.shift = shift;
+        this.priority = MAX_PRIORITY;
     }
 
-    public abstract void render(Graphics graph);
+    
+
+    public abstract void render(Graphics graph, Vector2D anchorPoint, double sin);
     public abstract double getCharactericticValue();
 
     public Color getColor() {

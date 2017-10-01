@@ -18,8 +18,9 @@ public class Triangle extends Part{
     Vector2D p1, p2, p3;
     double bubble;
 
-    public Triangle(Vector2D p1, Vector2D p2, Vector2D p3, Color color, Short priority) {
-        super(color, priority);
+    
+    public Triangle(Vector2D p1, Vector2D p2, Vector2D p3, Color color, Short priority, Vector2D shift) {
+        super(color, priority, shift);
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
@@ -28,19 +29,18 @@ public class Triangle extends Part{
         bubble = Math.max(middlePoint.Sub(p1).getLength(), Math.max(middlePoint.Sub(p2).getLength(), middlePoint.Sub(p3).getLength())) * 1.01;
     }
 
-    public Triangle(Vector2D p1, Vector2D p2, Vector2D p3, double bubble, Color color) {
-        super(color);
+    public Triangle(Vector2D p1, Vector2D p2, Vector2D p3, Color color, Vector2D shift) {
+        super(color, shift);
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
-        this.bubble = bubble;
         
         Vector2D middlePoint = p1.Add(p2.Add(p3)).Multiply(1/3);
         bubble = Math.max(middlePoint.Sub(p1).getLength(), Math.max(middlePoint.Sub(p2).getLength(), middlePoint.Sub(p3).getLength())) * 1.01;
     }
-
+    
     @Override
-    public void render(Graphics graph) {
+    public void render(Graphics graph, Vector2D anchorPoint, double sin) {
         graph.setColor(color);
         graph.drawPolygon(new int[]{(int)p1.x,(int)p2.x,(int)p3.x}, new int[]{(int)p1.y,(int)p2.y,(int)p3.y}, 3);
     }

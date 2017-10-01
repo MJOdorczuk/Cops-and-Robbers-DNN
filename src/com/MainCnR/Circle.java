@@ -19,20 +19,21 @@ public class Circle extends Part{
     private Vector2D mPoint;
     public final static double MARGIN = 1;
 
-    public Circle(double radius, Vector2D mPoint, Color color, Short priority) {
-        super(color, priority);
+    public Circle(double radius, Vector2D mPoint, Color color, Short priority, Vector2D shift) {
+        super(color, priority, shift);
         this.radius = radius;
         this.mPoint = mPoint;
     }
 
-    public Circle(double radius, Vector2D mPoint, Color color) {
-        super(color);
+    public Circle(double radius, Vector2D mPoint, Color color, Vector2D shift) {
+        super(color, shift);
         this.radius = radius;
         this.mPoint = mPoint;
     }
 
+    
     @Override
-    public void render(Graphics graph)
+    public void render(Graphics graph, Vector2D anchorPoint, double sin) 
     {
         graph.setColor(color);
         graph.drawOval((int)(mPoint.x - radius), (int)(mPoint.y - radius), (int)(2*radius), (int)(2*radius));
