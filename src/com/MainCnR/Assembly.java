@@ -5,6 +5,7 @@
  */
 package com.MainCnR;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -119,6 +120,14 @@ public class Assembly {
         Vector2D PoC = ifCollide(Collider);
         Collider.blocks.add(PoC.Sub(Collider.mPoint).getUnit());
         this.blocks.add(PoC.Sub(this.mPoint).getUnit());
+    }
+    
+    public void render(Graphics graph)
+    {
+        for(int i=0; i<Party.size(); i++)
+        {
+            Party.get(i).render(graph, mPoint, rotation);
+        }
     }
     
     public ArrayList<Part> getParty() {
