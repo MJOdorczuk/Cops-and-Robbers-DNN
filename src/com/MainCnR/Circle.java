@@ -16,29 +16,54 @@ import java.util.ArrayList;
 public class Circle extends Part{
 
     private double radius;
+    /**
+     * Middle point of circle.
+     */
     private Vector2D mPoint;
-    public final static double MARGIN = 1;
-
+    
+    /**
+     * 
+     * @param radius
+     * @param mPoint - middle point of circle.
+     * @param color
+     * @param priority
+     * @param shift - shift from middle point of assembly to middle point of circle
+     */
     public Circle(double radius, Vector2D mPoint, Color color, Short priority, Vector2D shift) {
         super(color, priority, shift);
         this.radius = radius;
         this.mPoint = mPoint;
     }
 
+    /**
+     * 
+     * @param radius
+     * @param mPoint - middle point of circle.
+     * @param color
+     * @param shift - shift from middle point of assembly to middle point of circle.
+     */
     public Circle(double radius, Vector2D mPoint, Color color, Vector2D shift) {
         super(color, shift);
         this.radius = radius;
         this.mPoint = mPoint;
     }
 
-    
+    /**
+     * 
+     * @param graph
+     * @param anchorPoint - coordinates of middle point of assembly on screen.
+     * @param rotation - rotation of whole assembly.
+     */
     @Override
     public void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation) 
     {
         graph.setColor(color);
-        graph.drawOval((int)(mPoint.complexProduct(rotation).Add(anchorPoint).x - radius), (int)(mPoint.complexProduct(rotation).Add(anchorPoint).y - radius), (int)(2*radius), (int)(2*radius));
+        graph.drawOval((int)(mPoint.complexProduct(rotation).Add(shift).x - radius), (int)(mPoint.complexProduct(rotation).Add(shift).y - radius), (int)(2*radius), (int)(2*radius));
     }
     
+    /**
+     * Returns middle point of circle.
+     */
     @Override
     public ArrayList <Vector2D> getCharateristicPoints()
     {
