@@ -122,11 +122,11 @@ public class Assembly {
         this.blocks.add(PoC.Sub(this.mPoint).getUnit());
     }
     
-    public void render(Graphics graph)
+    public void render(Graphics graph, Vector2D local)
     {
         for(int i=0; i<Party.size(); i++)
         {
-            Party.get(i).render(graph, mPoint, rotation);
+            Party.get(i).render(graph, mPoint, rotation, local);
         }
     }
     

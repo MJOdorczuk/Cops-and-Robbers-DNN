@@ -50,6 +50,7 @@ public class Programmer extends Actor
         graph.fillOval((int)(position.x - local.x - 8), (int)(position.y - local.y - 8), 16, 16);
         graph.setColor(Color.black);
         graph.fillOval((int)(position.x - local.x - 4), (int)(position.y - local.y - 4), 8, 8);
+        model.render(graph, local);
     }
 
     public void setKey(boolean[] key)

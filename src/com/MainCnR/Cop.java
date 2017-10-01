@@ -74,5 +74,6 @@ public class Cop extends Actor
         else
             graph.setColor(Color.blue);
         graph.fillOval((int)(position.x - local.x - 12), (int)(position.y - local.y - 12), 24, 24);
+        model.render(graph, local);
     }
 }

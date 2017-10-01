@@ -41,9 +41,9 @@ public class Triangle extends Part{
     }
     
     @Override
-    public void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation) {
+    public void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation, Vector2D local) {
         graph.setColor(color);
-        graph.drawPolygon(new int[]{(int)p1.complexProduct(rotation).Add(anchorPoint).x,(int)p2.complexProduct(rotation).Add(anchorPoint).x,(int)p3.complexProduct(rotation).Add(anchorPoint).x}, new int[]{(int)p1.complexProduct(rotation).Add(anchorPoint).y,(int)p2.complexProduct(rotation).Add(anchorPoint).y,(int)p3.complexProduct(rotation).Add(anchorPoint).y}, 3);
+        graph.drawPolygon(new int[]{(int)p1.complexProduct(rotation).Add(anchorPoint).Sub(local).x,(int)p2.complexProduct(rotation).Add(anchorPoint).Sub(local).x,(int)p3.complexProduct(rotation).Add(anchorPoint).Sub(local).x}, new int[]{(int)p1.complexProduct(rotation).Add(anchorPoint).Sub(local).y,(int)p2.complexProduct(rotation).Add(anchorPoint).Sub(local).y,(int)p3.complexProduct(rotation).Add(anchorPoint).Sub(local).y}, 3);
     }
 
     @Override

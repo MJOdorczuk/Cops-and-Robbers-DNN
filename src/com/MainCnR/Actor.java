@@ -37,6 +37,8 @@ public abstract class Actor extends GameObject
         sightAngle = Math.random() * Math.toRadians(MAX_SIGHT_ANGLE - MIN_SIGHT_ANGLE) + Math.toRadians(MIN_SIGHT_ANGLE);
         sightDistance = Math.random() * (MAX_SIGHT_DISTANCE - MIN_SIGHT_DISTANCE) + MIN_SIGHT_DISTANCE;
         blockVector = new Vector2D(0, 0);
+        model = new Assembly(100, position, rotation);
+        model.addParts(new Circle(16, new Vector2D(0, 0), Color.cyan, new Vector2D(0 , 0)));
     }
     
     public abstract void controller(double deltaTime);
@@ -77,6 +79,7 @@ public abstract class Actor extends GameObject
         }
         //velocity = velocity.Sub(blockVector);
         position = position.Add(velocity.Multiply(deltaTime));
+        model.setmPoint(position);
     }
     
     public boolean lookFor(GameObject object)

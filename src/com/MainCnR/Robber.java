@@ -23,7 +23,7 @@ public class Robber extends Actor
     @Override
     public void controller(double deltaTime)
     {
-        controllerTimer += deltaTime;
+       /* controllerTimer += deltaTime;
         key[KeyInput.KEY_W] = true;
         if(controllerTimer > Math.random() * 10)
         {
@@ -39,7 +39,7 @@ public class Robber extends Actor
                 }
             }
             controllerTimer = 0;
-        }
+        }*/
     }
 
     @Override
@@ -63,6 +63,7 @@ public class Robber extends Actor
                 32, 32);
         graph.setColor(Color.black);
         graph.fillOval((int)(position.x - local.x - 12), (int)(position.y - local.y - 12), 24, 24);
+        model.render(graph, local);
     }
     
 }
