@@ -53,4 +53,17 @@ public class Robber extends Actor
         if(position.y > Game.WINDOW_HEIGHT - 16) position.y = Game.WINDOW_HEIGHT- 16;
     }
     
+    @Override
+    public void render(Graphics graph, Vector2D local)
+    {
+        drawSight(graph, local);
+        graph.setColor(Color.darkGray);
+        graph.fillOval((int)(position.x - local.x - 16),
+                (int)(position.y - local.y - 16),
+                32, 32);
+        graph.setColor(Color.black);
+        graph.fillOval((int)(position.x - local.x - 12), (int)(position.y - local.y - 12), 24, 24);
+        model.render(graph, local);
+    }
+    
 }
