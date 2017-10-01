@@ -33,7 +33,7 @@ public class Game extends Canvas implements Runnable
         handler = new Handler(keyInput);
         new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Cops and Robbers DNN", this);
         handler.addObject(new World(0, 0, ID.World));
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 1; i++)
         {
             handler.addObject(new Cop(
                     (int)(Math.random() * WINDOW_WIDTH),

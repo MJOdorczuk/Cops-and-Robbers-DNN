@@ -27,7 +27,7 @@ public abstract class Actor extends GameObject
     {
         super(x, y, id);
         key = new boolean[15];
-        setRotation(Math.random() * 2 * Math.PI);
+        rotation = (Math.random() * 2 * Math.PI);
         sightAngle = Math.random() * 1.4 + 0.1;
         sightDistance = Math.random() * 150 + 50;
         blockVector = new Vector2D(0, 0);
@@ -94,16 +94,38 @@ public abstract class Actor extends GameObject
         {
             graph.setColor(Color.yellow);
         }
+        Vector2D localPosition = new Vector2D(
+                position.x - local.x,
+                position.y - local.y);
+        Vector2D point1 = new Vector2D(
+                sightDistance * Math.cos(rotation + sightAngle / 2),
+                sightDistance * Math.sin(rotation + sightAngle / 2));
+        Vector2D point2 = new Vector2D(
+                sightDistance * Math.cos(rotation - sightAngle / 2),
+                sightDistance * Math.sin(rotation - sightAngle / 2));
+        point1 = point1.Add(localPosition);
+        point2 = point2.Add(localPosition);
         graph.drawLine(
-                (int)(position.x - local.x),
-                (int)(position.y - local.y),
-                (int)(position.x - local.x + sightDistance * Math.cos(rotation + sightAngle / 2)),
-                (int)(position.y - local.y + sightDistance * Math.sin(rotation + sightAngle / 2)));
+                (int)localPosition.x,
+                (int)localPosition.y,
+                (int)point1.x,
+                (int)point1.y);
         graph.drawLine(
-                (int)(position.x - local.x),
-                (int)(position.y - local.y),
-                (int)(position.x - local.x + sightDistance * Math.cos(rotation - sightAngle / 2)),
-                (int)(position.y - local.y + sightDistance * Math.sin(rotation - sightAngle / 2)));
+                (int)localPosition.x,
+                (int)localPosition.y,
+                (int)point2.x,
+                (int)point2.y);
+        graph.drawLine(
+                (int)point1.x,
+                (int)point1.y,
+                (int)point2.x,
+                (int)point2.y);
+        /*graph.drawArc(
+                (int)(position.x - sightDistance - local.x),
+                (int)(position.y - sightDistance - local.y),
+                (int)(sightDistance * 2), (int)(sightDistance * 2),
+                (int)Math.toDegrees(endAngle),
+                (int)Math.toDegrees(startAngle));*/
     }
 
     public double getSightAngle()

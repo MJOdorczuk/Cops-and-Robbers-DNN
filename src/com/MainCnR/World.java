@@ -29,12 +29,6 @@ public class World extends GameObject
     @Override
     public void render(Graphics graph, Vector2D local)
     {
-        graph.setColor(Color.red);
-        graph.fillRect(
-                (int)(position.x - local.x - 20),
-                (int)(position.y - local.y - 20),
-                (int)Game.WINDOW_WIDTH + 20,
-                (int)Game.WINDOW_HEIGHT + 20);
         for(int row = 0; row < 100; row++)
             for(int col = 0; col < 100; col++)
             {
@@ -52,6 +46,27 @@ public class World extends GameObject
                         (int)50,
                         (int)50);
             }
+        graph.setColor(Color.red);
+        graph.fillRect(
+                (int)(position.x - local.x - 20),
+                (int)(position.y - local.y - 20),
+                (int)(Game.WINDOW_WIDTH + 20),
+                (int)(20));
+        graph.fillRect(
+                (int)(position.x - local.x - 20),
+                (int)(position.y - local.y - 20),
+                (int)(20),
+                (int)(Game.WINDOW_HEIGHT + 20));
+        graph.fillRect(
+                (int)(position.x - local.x - 20),
+                (int)(position.y - local.y + Game.WINDOW_HEIGHT),
+                (int)(Game.WINDOW_WIDTH + 20),
+                (int)(20));
+        graph.fillRect(
+                (int)(position.x - local.x + Game.WINDOW_WIDTH),
+                (int)(position.y - local.y - 20),
+                (int)(20),
+                (int)(Game.WINDOW_HEIGHT + 20));
     }
     
 }
