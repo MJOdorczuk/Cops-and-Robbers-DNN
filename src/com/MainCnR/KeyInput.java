@@ -30,10 +30,14 @@ public class KeyInput extends KeyAdapter
     public static final short KEY_R = 12;
     public static final short KEY_Q = 13;
     public static final short KEY_E = 14;
+    public static final short KEY_PLUS = 15;
+    public static final short KEY_MINUS = 16;
+    public static final short KEY_7 = 17;
+    public static final short KEY_9 = 18;
 
     public KeyInput()
     {
-        key = new boolean[15];
+        key = new boolean[19];
     }
     
     @Override
@@ -85,6 +89,18 @@ public class KeyInput extends KeyAdapter
                 break;
             case KeyEvent.VK_E:
                 key[KEY_E] = true;
+                break;
+            case KeyEvent.VK_EQUALS:
+                key[KEY_PLUS] = true;
+                break;
+            case KeyEvent.VK_MINUS:
+                key[KEY_MINUS] = true;
+                break;
+            case KeyEvent.VK_7:
+                key[KEY_7] = true;
+                break;
+            case KeyEvent.VK_9:
+                key[KEY_9] = true;
                 break;
         }
     }
@@ -138,6 +154,18 @@ public class KeyInput extends KeyAdapter
                 break;
             case KeyEvent.VK_E:
                 key[KEY_E] = false;
+                break;
+            case KeyEvent.VK_EQUALS:
+                key[KEY_PLUS] = false;
+                break;
+            case KeyEvent.VK_MINUS:
+                key[KEY_MINUS] = false;
+                break;
+            case KeyEvent.VK_7:
+                key[KEY_7] = false;
+                break;
+            case KeyEvent.VK_9:
+                key[KEY_9] = false;
                 break;
         }
     }

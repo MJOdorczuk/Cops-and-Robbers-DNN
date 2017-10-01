@@ -20,6 +20,9 @@ public class Handler
     LinkedList<GameObject> object;
     LinkedList<Actor> actor;
     private double deltaTime;
+    public static final double ROTATION_SPEED = 0.1;
+    public static final double ZOOM_SPEED = 0.3;
+    private Vector2D rotation = new Vector2D(1,0);
 
     public Handler(KeyInput keyInput)
     {
@@ -81,6 +84,24 @@ public class Handler
         {
             localPosition = localPosition.Add(new Vector2D(500 * deltaTime, 0));
         }
+        if(key[KeyInput.KEY_7])
+        {
+            scale = scale.complexProduct(rotation);
+            localPosition = localPosition.complexConjugateProduct(rotation);
+        }
+        if(key[KeyInput.KEY_9])
+        {
+            scale = scale.complexConjugateProduct(rotation);
+            localPosition = localPosition.Add(new Vector2D( - Game.WINDOW_WIDTH / 2, - Game.WINDOW_HEIGHT / 2)).complexProduct(rotation).Sub(new Vector2D(  - Game.WINDOW_WIDTH / 2, - Game.WINDOW_HEIGHT / 2));
+        }
+        if(key[KeyInput.KEY_PLUS])
+        {
+            scale = scale.Multiply(1 + ZOOM_SPEED * deltaTime);
+        }
+        if(key[KeyInput.KEY_MINUS])
+        {
+            scale = scale.Multiply(1/(1 + deltaTime * ZOOM_SPEED));
+        }
         
     }
     public void render(Graphics graph)
@@ -117,6 +138,7 @@ public class Handler
     public void setDeltaTime(double deltaTime)
     {
         this.deltaTime = deltaTime;
+        rotation = new Vector2D(Math.cos(deltaTime * Math.PI * 2 * ROTATION_SPEED),Math.sin(deltaTime * Math.PI * 2 * ROTATION_SPEED));
     }
     
     
