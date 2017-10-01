@@ -40,9 +40,9 @@ public class Triangle extends Part{
     }
     
     @Override
-    public void render(Graphics graph, Vector2D anchorPoint, double sin) {
+    public void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation) {
         graph.setColor(color);
-        graph.drawPolygon(new int[]{(int)p1.x,(int)p2.x,(int)p3.x}, new int[]{(int)p1.y,(int)p2.y,(int)p3.y}, 3);
+        graph.drawPolygon(new int[]{(int)p1.complexProduct(rotation).Add(anchorPoint).x,(int)p2.complexProduct(rotation).Add(anchorPoint).x,(int)p3.complexProduct(rotation).Add(anchorPoint).x}, new int[]{(int)p1.complexProduct(rotation).Add(anchorPoint).y,(int)p2.complexProduct(rotation).Add(anchorPoint).y,(int)p3.complexProduct(rotation).Add(anchorPoint).y}, 3);
     }
 
     @Override

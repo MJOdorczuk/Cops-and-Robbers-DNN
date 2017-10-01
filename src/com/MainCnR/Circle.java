@@ -33,10 +33,10 @@ public class Circle extends Part{
 
     
     @Override
-    public void render(Graphics graph, Vector2D anchorPoint, double sin) 
+    public void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation) 
     {
         graph.setColor(color);
-        graph.drawOval((int)(mPoint.x - radius), (int)(mPoint.y - radius), (int)(2*radius), (int)(2*radius));
+        graph.drawOval((int)(mPoint.complexProduct(rotation).Add(anchorPoint).x - radius), (int)(mPoint.complexProduct(rotation).Add(anchorPoint).y - radius), (int)(2*radius), (int)(2*radius));
     }
     
     @Override

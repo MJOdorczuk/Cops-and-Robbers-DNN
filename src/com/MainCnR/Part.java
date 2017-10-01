@@ -35,7 +35,7 @@ public abstract class Part {
 
     
 
-    public abstract void render(Graphics graph, Vector2D anchorPoint, double sin);
+    public abstract void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation);
     public abstract double getCharactericticValue();
 
     public Color getColor() {
