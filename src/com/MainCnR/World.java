@@ -105,7 +105,7 @@ public class World extends GameObject
         y2 = (int) position.Add(right).Sub(down).Add(farRight).y;
         y3 = (int) position.Add(right).Add(down).Add(farRight).Add(farDown).y;
         y4 = (int) position.Sub(right).Add(down).Add(farRight).Add(farDown).y;
-        graph.fillPolygon(new int[]{x1,x2,x3,x4}, new int[]{y1,y2,y3,y4}, 4);
+        graph.fillPolygon(new int[]{x1,x2,x3,x4}, new int[]{y1,y2,y3,y4}, 4); //test
     }
     
 }
