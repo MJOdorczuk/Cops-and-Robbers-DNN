@@ -21,24 +21,31 @@ public class Assembly {
     double mass;
     double MoI;
     Vector2D mPoint;
+    Vector2D rotation;
     ArrayList<Vector2D> blocks;
 
-    public Assembly(double bubble, double mass, double MoI, Vector2D mPoint) {
+    public Assembly(double bubble, double mass, double MoI, Vector2D mPoint, double theta) {
         this.bubble = bubble;
         this.mass = mass;
         this.MoI = MoI;
         this.mPoint = mPoint;
+        rotation = new Vector2D(1,0);
+        rotate(theta);
     }
 
-    public Assembly(double mass, double MoI, Vector2D mPoint) {
+    public Assembly(double mass, double MoI, Vector2D mPoint, double theta) {
         this.mass = mass;
         this.MoI = MoI;
         this.mPoint = mPoint;
+        rotation = new Vector2D(1,0);
+        rotate(theta);
     }
 
-    public Assembly(double mass, Vector2D mPoint) {
+    public Assembly(double mass, Vector2D mPoint, double theta) {
         this.mass = mass;
         this.mPoint = mPoint;
+        rotation = new Vector2D(1,0);
+        rotate(theta);
     }
     
     public void addParts(Part... Party)
@@ -189,6 +196,11 @@ public class Assembly {
         }
         if(j == 0) return null;
         else return mPoint.Multiply(1/((double)j));
+    }
+    
+    public final void rotate(double theta)
+    {
+        this.rotation = this.rotation.complexProduct(new Vector2D(Math.cos(theta), Math.sin(theta)));
     }
     
 }
