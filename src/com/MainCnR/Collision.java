@@ -20,8 +20,8 @@ public class Collision {
     public Collision(Part Collider1, Part Collider2, Vector2D dif, Vector2D rot1, Vector2D rot2) {
         this.Collider1 = Collider1;
         this.Collider2 = Collider2;
-        cp1 = Collider1.getCharateristicPoints();
-        cp2 = Collider2.getCharateristicPoints();
+        cp1 = Collider1.getCharacteristicPoints();
+        cp2 = Collider2.getCharacteristicPoints();
         for(int i=0; i<cp1.size(); i++)
         {
             cp1.get(i).Add(Collider1.getShift()).complexProduct(rot1);

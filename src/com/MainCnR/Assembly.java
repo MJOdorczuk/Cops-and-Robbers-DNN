@@ -82,7 +82,7 @@ public class Assembly {
         Vector2D point = new Vector2D(0,0);
         for(int i=0; i<Party.size(); i++)
         {
-            point.setVector(middlePoint(Party.get(i).getCharateristicPoints()));
+            point.setVector(middlePoint(Party.get(i).getCharacteristicPoints()));
             MoI += Party.get(i).getMoI() + Party.get(i).getField() * Math.pow(point.Sub(mPoint).getLength(), 2);
             field += Party.get(i).getField();
         }

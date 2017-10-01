@@ -52,7 +52,7 @@ public class Triangle extends Part{
     }
 
     @Override
-    public ArrayList<Vector2D> getCharateristicPoints() {
+    public ArrayList<Vector2D> getCharacteristicPoints() {
         ArrayList <Vector2D> points = new ArrayList <>();
         points.add(p1);
         points.add(p2);

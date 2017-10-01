@@ -65,7 +65,7 @@ public class Circle extends Part{
      * Returns middle point of circle.
      */
     @Override
-    public ArrayList <Vector2D> getCharateristicPoints()
+    public ArrayList <Vector2D> getCharacteristicPoints()
     {
         ArrayList <Vector2D> Points = new ArrayList <>();
         Points.add(mPoint);
@@ -92,5 +92,4 @@ public class Circle extends Part{
     public double getField() {
         return Math.PI * radius * radius;
     }
-
 }

@@ -43,7 +43,7 @@ public class Line extends Part{
     }
 
     @Override
-    public ArrayList<Vector2D> getCharateristicPoints() {
+    public ArrayList<Vector2D> getCharacteristicPoints() {
         ArrayList<Vector2D> ret = new ArrayList<>();
         ret.add(p1);
         ret.add(p2);
@@ -64,6 +64,11 @@ public class Line extends Part{
     @Override
     public double getField() {
         return 0;
+    }
+
+    @Override
+    public Vector2D getmPoint() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
