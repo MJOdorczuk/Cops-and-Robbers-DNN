@@ -44,6 +44,12 @@ public abstract class Part {
         this.priority = MAX_PRIORITY;
     }
     
+    public Part(Part newPart)
+    {
+        this.color = newPart.color;
+        this.priority = newPart.priority;
+    }
+    
     /**
      * 
      * @param graph
@@ -88,4 +94,8 @@ public abstract class Part {
         }
         return ap.Multiply(1/points.size());
     }
+    
+    public abstract void addPosition(Vector2D shift);
+    public abstract void rotate(Vector2D rotation);
+    public abstract Part getClone();
 }

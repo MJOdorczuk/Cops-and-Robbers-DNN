@@ -29,7 +29,11 @@ public class Line extends Part{
         this.p2 = p2;
     }
 
-    
+    public Line(Line newPart) {
+        super(newPart);
+        this.p1 = newPart.p1;
+        this.p2 = newPart.p2;
+    }
     
     @Override
     public void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation, Vector2D local, Vector2D scale) {
@@ -74,6 +78,23 @@ public class Line extends Part{
     @Override
     public Vector2D getmPoint() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addPosition(Vector2D shift) {
+        p1 = p1.Add(shift);
+        p2 = p2.Add(shift);
+    }
+
+    @Override
+    public void rotate(Vector2D rotation) {
+        p1 = p1.complexProduct(rotation);
+        p2 = p2.complexProduct(rotation);
+    }
+
+    @Override
+    public Part getClone() {
+        return new Line(this);
     }
     
     

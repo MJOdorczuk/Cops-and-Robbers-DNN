@@ -48,6 +48,12 @@ public class Circle extends Part{
         this.mPoint = mPoint;
     }
 
+    public Circle(Circle newPart) {
+        super(newPart);
+        this.radius = newPart.radius;
+        this.mPoint = newPart.mPoint;
+    }
+
     /**
      * 
      * @param graph
@@ -96,4 +102,20 @@ public class Circle extends Part{
     public double getField() {
         return Math.PI * radius * radius;
     }
+
+    @Override
+    public void addPosition(Vector2D shift) {
+        mPoint = mPoint.Add(shift);
+    }
+
+    @Override
+    public void rotate(Vector2D rotation) {
+        mPoint = mPoint.complexProduct(rotation);
+    }
+
+    @Override
+    public Part getClone() {
+        return new Circle(this);
+    }
+    
 }

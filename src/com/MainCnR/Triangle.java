@@ -39,6 +39,14 @@ public class Triangle extends Part{
         Vector2D middlePoint = p1.Add(p2.Add(p3)).Multiply(1/3);
         bubble = Math.max(middlePoint.Sub(p1).getLength(), Math.max(middlePoint.Sub(p2).getLength(), middlePoint.Sub(p3).getLength())) * MARGIN;
     }
+
+    public Triangle(Triangle newPart) {
+        super(newPart);
+        this.bubble = newPart.bubble;
+        this.p1 = newPart.p1;
+        this.p2 = newPart.p2;
+        this.p3 = newPart.p3;
+    }
     
     @Override
     public void render(Graphics graph, Vector2D anchorPoint, Vector2D rotation, Vector2D local, Vector2D scale) {
@@ -91,6 +99,25 @@ public class Triangle extends Part{
     @Override
     public double getField() {
         return Math.abs(p2.Sub(p1).crossProduct(p3.Sub(p1)))/2;
+    }
+
+    @Override
+    public void addPosition(Vector2D shift) {
+        p1 = p1.Add(shift);
+        p2 = p2.Add(shift);
+        p3 = p3.Add(shift);
+    }
+
+    @Override
+    public void rotate(Vector2D rotation) {
+        p1 = p1.complexProduct(rotation);
+        p2 = p2.complexProduct(rotation);
+        p3 = p3.complexProduct(rotation);
+    }
+
+    @Override
+    public Part getClone() {
+        return new Triangle(this);
     }
     
 }

@@ -52,6 +52,30 @@ public class Assembly {
         rotate(theta);
     }
     
+    public ArrayList <Part> getAbsoluteParty ()
+    {
+        ArrayList <Part> newParty = new ArrayList<>();
+        Part part;
+        for(int i = 0; i < Party.size(); i++)
+        {
+             part = Party.get(i).getClone();
+             part.addPosition(mPoint);
+             part.rotate(rotation);
+             newParty.add(part);
+        }
+        return newParty;
+    }
+    
+    public ArrayList <Part> getPartyOnScreen(Vector2D local, Vector2D scale)
+    {
+        ArrayList <Part> newParty = getAbsoluteParty();
+        for(int i=0; i<newParty.size(); i++)
+        {
+            newParty.get(i).addPosition((new Vector2D(0,0).Sub(local)).complexProduct(scale));
+        }
+        return newParty;
+    }
+    
     public void addParts(Part... Party)
     {
         for(int i=0; i<Party.length; i++) this.Party.add(Party[i]);
